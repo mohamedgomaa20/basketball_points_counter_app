@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
-class BasketballPointsCounterScreen extends StatelessWidget {
-  const BasketballPointsCounterScreen({super.key});
+class BasketballPointsCounterScreen extends StatefulWidget {
+  @override
+  State<BasketballPointsCounterScreen> createState() =>
+      _BasketballPointsCounterScreenState();
+}
+
+class _BasketballPointsCounterScreenState
+    extends State<BasketballPointsCounterScreen> {
+  int teamAPoints = 0;
+
+  int teamBPoints = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +30,19 @@ class BasketballPointsCounterScreen extends StatelessWidget {
                 children: [
                   Text("Team A", style: TextStyle(fontSize: 32)),
 
-                  Text("0", style: TextStyle(fontSize: 150)),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 25.0),
+                    child: Text(
+                      "$teamAPoints",
+                      style: TextStyle(fontSize: 100),
+                    ),
+                  ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        teamAPoints++;
+                      });
+                    },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(150, 50),
                       backgroundColor: Colors.orange,
@@ -36,7 +55,11 @@ class BasketballPointsCounterScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 15),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        teamAPoints += 2;
+                      });
+                    },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(150, 50),
                       backgroundColor: Colors.orange,
@@ -49,7 +72,11 @@ class BasketballPointsCounterScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 15),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        teamAPoints += 3;
+                      });
+                    },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(150, 50),
                       backgroundColor: Colors.orange,
@@ -64,7 +91,7 @@ class BasketballPointsCounterScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: 450,
+                height: 420,
                 child: VerticalDivider(indent: 30, endIndent: 20),
               ),
               Column(
@@ -72,9 +99,20 @@ class BasketballPointsCounterScreen extends StatelessWidget {
                 children: [
                   Text("Team B", style: TextStyle(fontSize: 32)),
 
-                  Text("0", style: TextStyle(fontSize: 150)),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 25.0),
+
+                    child: Text(
+                      "$teamBPoints",
+                      style: TextStyle(fontSize: 100),
+                    ),
+                  ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        teamBPoints++;
+                      });
+                    },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(150, 50),
                       backgroundColor: Colors.orange,
@@ -87,7 +125,11 @@ class BasketballPointsCounterScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 15),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        teamBPoints += 2;
+                      });
+                    },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(150, 50),
                       backgroundColor: Colors.orange,
@@ -100,7 +142,11 @@ class BasketballPointsCounterScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 15),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        teamBPoints += 3;
+                      });
+                    },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(150, 50),
                       backgroundColor: Colors.orange,
@@ -118,7 +164,12 @@ class BasketballPointsCounterScreen extends StatelessWidget {
           SizedBox(height: 100),
 
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                teamAPoints = 0;
+                teamBPoints = 0;
+              });
+            },
             style: ElevatedButton.styleFrom(
               minimumSize: Size(150, 50),
               backgroundColor: Colors.orange,
