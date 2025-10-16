@@ -31,6 +31,8 @@ class _BasketballPointsCounterScreenState
 
   @override
   Widget build(BuildContext context) {
+    // const teamAColor = Color(0xFFe94560);
+    // const teamBColor = Color(0xFF4ecca3);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
