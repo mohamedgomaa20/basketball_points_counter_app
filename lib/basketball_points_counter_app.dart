@@ -40,29 +40,35 @@ class _BasketballPointsCounterScreenState
         child: SafeArea(
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.sports_basketball, color: Color(0xFFe94560)),
-                  SizedBox(width: 12),
-                  Text(
-                    "BasketBall Score",
-                    style: TextStyle(
-                      fontSize: 28,
-                      letterSpacing: 1.2,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.sports_basketball,
+                      color: Color(0xFFe94560),
+                      size: 32,
                     ),
-                  ),
-                ],
+                    SizedBox(width: 12),
+                    Text(
+                      "BasketBall Score",
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        letterSpacing: 1.2,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              SizedBox(height: 50),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: [
-                      BuildTeamCard(
+
+              Expanded(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: BuildTeamCard(
                         teamName: "Team A",
                         teamPoints: teamAPoints,
                         color: Color(0xFFe94560),
@@ -70,37 +76,76 @@ class _BasketballPointsCounterScreenState
                         onAdd2: () => addPoints(teamName: "A", point: 2),
                         onAdd3: () => addPoints(teamName: "A", point: 3),
                       ),
+                    ),
+
+                    Container(
+                      width: 2,
+                      height: 400,
+                      margin: EdgeInsets.symmetric(horizontal: 8),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.transparent,
+                            Color(0xFFe94560).withOpacity(0.3),
+                            Colors.transparent,
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    Expanded(
+                      child: BuildTeamCard(
+                        teamName: "Team B",
+                        teamPoints: teamBPoints,
+                        color: Color(0xFF4ecca3),
+                        onAdd1: () => addPoints(teamName: "B", point: 1),
+                        onAdd2: () => addPoints(teamName: "B", point: 2),
+                        onAdd3: () => addPoints(teamName: "B", point: 3),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              InkWell(
+                onTap: resetPoints,
+                borderRadius: BorderRadius.circular(20),
+                child: Container(
+                  margin: EdgeInsets.all(30),
+                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 50),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: LinearGradient(
+                      colors: [Color(0xFFe94560), Color(0xFFf4567c)],
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xFFe94560).withOpacity(0.4),
+                        blurRadius: 20,
+                        offset: Offset(0, 8),
+                      ),
                     ],
                   ),
-                  SizedBox(
-                    height: 420,
-                    child: VerticalDivider(indent: 30, endIndent: 20),
-                  ),
-                  BuildTeamCard(
-                    teamName: "Team B",
-                    teamPoints: teamBPoints,
-                    color: Color(0xFF4ecca3),
-                    onAdd1: () => addPoints(teamName: "B", point: 1),
-                    onAdd2: () => addPoints(teamName: "B", point: 2),
-                    onAdd3: () => addPoints(teamName: "B", point: 3),
-                  ),
-                ],
-              ),
-              SizedBox(height: 100),
 
-              ElevatedButton(
-                onPressed: () {
-                  resetPoints();
-                },
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(150, 50),
-                  backgroundColor: Colors.orange,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(6),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.refresh, color: Colors.white, size: 24),
+                      SizedBox(width: 12),
+                      Text(
+                        "Reset Game",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          letterSpacing: 1,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                child: Text("Reset", style: TextStyle(fontSize: 18)),
               ),
             ],
           ),
@@ -131,11 +176,13 @@ class BuildTeamCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         BuildTeamNameItem(teamName: teamName, color: color),
+
         SizedBox(height: 30),
-        BuildTeamPointItem(teamBPoints: teamPoints, color: color),
+        BuildTeamPointItem(teamPoints: teamPoints, color: color),
+        SizedBox(height: 40),
         BuildPointButton(color: color, text: "1 Point", onPressed: onAdd1),
         SizedBox(height: 15),
         BuildPointButton(color: color, text: "2 Point", onPressed: onAdd2),
@@ -149,11 +196,11 @@ class BuildTeamCard extends StatelessWidget {
 class BuildTeamPointItem extends StatelessWidget {
   const BuildTeamPointItem({
     super.key,
-    required this.teamBPoints,
+    required this.teamPoints,
     required this.color,
   });
 
-  final int teamBPoints;
+  final int teamPoints;
   final Color color;
 
   @override
@@ -180,7 +227,7 @@ class BuildTeamPointItem extends StatelessWidget {
       ),
       child: Center(
         child: Text(
-          "$teamBPoints",
+          "$teamPoints",
           style: TextStyle(
             fontSize: 75,
             fontWeight: FontWeight.bold,
