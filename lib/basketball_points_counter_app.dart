@@ -12,6 +12,23 @@ class _BasketballPointsCounterScreenState
 
   int teamBPoints = 0;
 
+  void addPoints({required String teamName, required int point}) {
+    setState(() {
+      if (teamName == "A") {
+        teamAPoints += point;
+      } else {
+        teamBPoints += point;
+      }
+    });
+  }
+
+  void resetPoints() {
+    setState(() {
+      teamAPoints = 0;
+      teamBPoints = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,9 +56,7 @@ class _BasketballPointsCounterScreenState
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      setState(() {
-                        teamAPoints++;
-                      });
+                      addPoints(teamName: "A", point: 1);
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(150, 50),
@@ -56,9 +71,7 @@ class _BasketballPointsCounterScreenState
                   SizedBox(height: 15),
                   ElevatedButton(
                     onPressed: () {
-                      setState(() {
-                        teamAPoints += 2;
-                      });
+                      addPoints(teamName: "A", point: 2);
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(150, 50),
@@ -73,9 +86,7 @@ class _BasketballPointsCounterScreenState
                   SizedBox(height: 15),
                   ElevatedButton(
                     onPressed: () {
-                      setState(() {
-                        teamAPoints += 3;
-                      });
+                      addPoints(teamName: "A", point: 3);
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(150, 50),
@@ -109,9 +120,7 @@ class _BasketballPointsCounterScreenState
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      setState(() {
-                        teamBPoints++;
-                      });
+                      addPoints(teamName: "B", point: 1);
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(150, 50),
@@ -126,9 +135,7 @@ class _BasketballPointsCounterScreenState
                   SizedBox(height: 15),
                   ElevatedButton(
                     onPressed: () {
-                      setState(() {
-                        teamBPoints += 2;
-                      });
+                      addPoints(teamName: "B", point: 2);
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(150, 50),
@@ -143,9 +150,7 @@ class _BasketballPointsCounterScreenState
                   SizedBox(height: 15),
                   ElevatedButton(
                     onPressed: () {
-                      setState(() {
-                        teamBPoints += 3;
-                      });
+                      addPoints(teamName: "B", point: 3);
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(150, 50),
@@ -165,10 +170,7 @@ class _BasketballPointsCounterScreenState
 
           ElevatedButton(
             onPressed: () {
-              setState(() {
-                teamAPoints = 0;
-                teamBPoints = 0;
-              });
+              resetPoints();
             },
             style: ElevatedButton.styleFrom(
               minimumSize: Size(150, 50),
