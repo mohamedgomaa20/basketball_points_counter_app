@@ -62,68 +62,13 @@ class _BasketballPointsCounterScreenState
                 children: [
                   Column(
                     children: [
-                      Text("Team A", style: TextStyle(fontSize: 32)),
-
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 25.0),
-                        child: Text(
-                          "$teamAPoints",
-                          style: TextStyle(fontSize: 100),
-                        ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          addPoints(teamName: "A", point: 1);
-                        },
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: Size(150, 50),
-                          backgroundColor: Colors.orange,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                        ),
-                        child: Text(
-                          "Add 1 Point",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                      ),
-                      SizedBox(height: 15),
-                      ElevatedButton(
-                        onPressed: () {
-                          addPoints(teamName: "A", point: 2);
-                        },
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: Size(150, 50),
-                          backgroundColor: Colors.orange,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                        ),
-                        child: Text(
-                          "Add 2 Point",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                      ),
-                      SizedBox(height: 15),
-                      ElevatedButton(
-                        onPressed: () {
-                          addPoints(teamName: "A", point: 3);
-                        },
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: Size(150, 50),
-                          backgroundColor: Colors.orange,
-                          foregroundColor: Colors.white,
-
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                        ),
-                        child: Text(
-                          "Add 3 Point",
-                          style: TextStyle(fontSize: 18),
-                        ),
+                      BuildTeamCard(
+                        teamName: "Team A",
+                        teamPoints: teamAPoints,
+                        color: Color(0xFFe94560),
+                        onAdd1: () => addPoints(teamName: "A", point: 1),
+                        onAdd2: () => addPoints(teamName: "A", point: 2),
+                        onAdd3: () => addPoints(teamName: "A", point: 3),
                       ),
                     ],
                   ),
@@ -131,73 +76,13 @@ class _BasketballPointsCounterScreenState
                     height: 420,
                     child: VerticalDivider(indent: 30, endIndent: 20),
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text("Team B", style: TextStyle(fontSize: 32)),
-
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 25.0),
-
-                        child: Text(
-                          "$teamBPoints",
-                          style: TextStyle(fontSize: 100),
-                        ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          addPoints(teamName: "B", point: 1);
-                        },
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: Size(150, 50),
-                          backgroundColor: Colors.orange,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                        ),
-                        child: Text(
-                          "Add 1 Point",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                      ),
-                      SizedBox(height: 15),
-                      ElevatedButton(
-                        onPressed: () {
-                          addPoints(teamName: "B", point: 2);
-                        },
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: Size(150, 50),
-                          backgroundColor: Colors.orange,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                        ),
-                        child: Text(
-                          "Add 2 Point",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                      ),
-                      SizedBox(height: 15),
-                      ElevatedButton(
-                        onPressed: () {
-                          addPoints(teamName: "B", point: 3);
-                        },
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: Size(150, 50),
-                          backgroundColor: Colors.orange,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                        ),
-                        child: Text(
-                          "Add 3 Point",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                      ),
-                    ],
+                  BuildTeamCard(
+                    teamName: "Team B",
+                    teamPoints: teamBPoints,
+                    color: Color(0xFF4ecca3),
+                    onAdd1: () => addPoints(teamName: "B", point: 1),
+                    onAdd2: () => addPoints(teamName: "B", point: 2),
+                    onAdd3: () => addPoints(teamName: "B", point: 3),
                   ),
                 ],
               ),
@@ -218,6 +103,172 @@ class _BasketballPointsCounterScreenState
                 child: Text("Reset", style: TextStyle(fontSize: 18)),
               ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class BuildTeamCard extends StatelessWidget {
+  const BuildTeamCard({
+    super.key,
+    required this.teamName,
+    required this.teamPoints,
+    required this.color,
+    required this.onAdd1,
+    required this.onAdd2,
+    required this.onAdd3,
+  });
+
+  final String teamName;
+  final int teamPoints;
+  final Color color;
+  final VoidCallback onAdd1;
+  final VoidCallback onAdd2;
+  final VoidCallback onAdd3;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        BuildTeamNameItem(teamName: teamName, color: color),
+        SizedBox(height: 30),
+        BuildTeamPointItem(teamBPoints: teamPoints, color: color),
+        BuildPointButton(color: color, text: "1 Point", onPressed: onAdd1),
+        SizedBox(height: 15),
+        BuildPointButton(color: color, text: "2 Point", onPressed: onAdd2),
+        SizedBox(height: 15),
+        BuildPointButton(color: color, text: "3 Point", onPressed: onAdd3),
+      ],
+    );
+  }
+}
+
+class BuildTeamPointItem extends StatelessWidget {
+  const BuildTeamPointItem({
+    super.key,
+    required this.teamBPoints,
+    required this.color,
+  });
+
+  final int teamBPoints;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 160,
+      width: 160,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: RadialGradient(
+          colors: [
+            color.withOpacity(.3),
+            color.withOpacity(.1),
+            Colors.transparent,
+          ],
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: color.withOpacity(.3),
+            blurRadius: 30,
+            spreadRadius: 5,
+          ),
+        ],
+      ),
+      child: Center(
+        child: Text(
+          "$teamBPoints",
+          style: TextStyle(
+            fontSize: 75,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+            shadows: [Shadow(color: color.withOpacity(.8), blurRadius: 20)],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class BuildTeamNameItem extends StatelessWidget {
+  const BuildTeamNameItem({
+    super.key,
+    required this.color,
+    required this.teamName,
+  });
+
+  final Color color;
+  final String teamName;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      decoration: BoxDecoration(
+        color: color.withOpacity(.3),
+        borderRadius: BorderRadius.circular(15),
+        border: Border.all(color: color.withOpacity(.3), width: 2),
+      ),
+      child: Text(
+        teamName,
+        style: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+          color: color,
+          letterSpacing: 1.5,
+        ),
+      ),
+    );
+  }
+}
+
+class BuildPointButton extends StatelessWidget {
+  const BuildPointButton({
+    super.key,
+    required this.color,
+    required this.text,
+    required this.onPressed,
+  });
+
+  final Color color;
+  final String text;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onPressed,
+      borderRadius: BorderRadius.circular(15),
+      child: Container(
+        width: 140,
+
+        padding: EdgeInsets.symmetric(vertical: 14),
+
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          gradient: LinearGradient(colors: [color, color.withOpacity(.7)]),
+          boxShadow: [
+            BoxShadow(
+              color: color.withOpacity(.4),
+              blurRadius: 15,
+
+              offset: Offset(0, 6),
+            ),
+          ],
+        ),
+
+        child: Center(
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              letterSpacing: .5,
+            ),
           ),
         ),
       ),
