@@ -9,7 +9,6 @@ class BasketballPointsCounterScreen extends StatefulWidget {
 class _BasketballPointsCounterScreenState
     extends State<BasketballPointsCounterScreen> {
   int teamAPoints = 0;
-
   int teamBPoints = 0;
 
   void addPoints({required String teamName, required int point}) {
@@ -32,157 +31,195 @@ class _BasketballPointsCounterScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Points Counter"),
-        backgroundColor: Colors.orange,
-        foregroundColor: Colors.white,
-      ),
-      body: Column(
-        children: [
-          SizedBox(height: 50),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFF1a1a2e), Color(0xFF16213e), Color(0xFF0f3460)],
+          ),
+        ),
+        child: SafeArea(
+          child: Column(
             children: [
-              Column(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Team A", style: TextStyle(fontSize: 32)),
-
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 25.0),
-                    child: Text(
-                      "$teamAPoints",
-                      style: TextStyle(fontSize: 100),
+                  Icon(Icons.sports_basketball, color: Color(0xFFe94560)),
+                  SizedBox(width: 12),
+                  Text(
+                    "BasketBall Score",
+                    style: TextStyle(
+                      fontSize: 28,
+                      letterSpacing: 1.2,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      addPoints(teamName: "A", point: 1);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(150, 50),
-                      backgroundColor: Colors.orange,
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6),
-                      ),
-                    ),
-                    child: Text("Add 1 Point", style: TextStyle(fontSize: 18)),
-                  ),
-                  SizedBox(height: 15),
-                  ElevatedButton(
-                    onPressed: () {
-                      addPoints(teamName: "A", point: 2);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(150, 50),
-                      backgroundColor: Colors.orange,
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6),
-                      ),
-                    ),
-                    child: Text("Add 2 Point", style: TextStyle(fontSize: 18)),
-                  ),
-                  SizedBox(height: 15),
-                  ElevatedButton(
-                    onPressed: () {
-                      addPoints(teamName: "A", point: 3);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(150, 50),
-                      backgroundColor: Colors.orange,
-                      foregroundColor: Colors.white,
-
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6),
-                      ),
-                    ),
-                    child: Text("Add 3 Point", style: TextStyle(fontSize: 18)),
                   ),
                 ],
               ),
-              SizedBox(
-                height: 420,
-                child: VerticalDivider(indent: 30, endIndent: 20),
-              ),
-              Column(
+              SizedBox(height: 50),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text("Team B", style: TextStyle(fontSize: 32)),
+                  Column(
+                    children: [
+                      Text("Team A", style: TextStyle(fontSize: 32)),
 
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 25.0),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 25.0),
+                        child: Text(
+                          "$teamAPoints",
+                          style: TextStyle(fontSize: 100),
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          addPoints(teamName: "A", point: 1);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(150, 50),
+                          backgroundColor: Colors.orange,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                        ),
+                        child: Text(
+                          "Add 1 Point",
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                      SizedBox(height: 15),
+                      ElevatedButton(
+                        onPressed: () {
+                          addPoints(teamName: "A", point: 2);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(150, 50),
+                          backgroundColor: Colors.orange,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                        ),
+                        child: Text(
+                          "Add 2 Point",
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                      SizedBox(height: 15),
+                      ElevatedButton(
+                        onPressed: () {
+                          addPoints(teamName: "A", point: 3);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(150, 50),
+                          backgroundColor: Colors.orange,
+                          foregroundColor: Colors.white,
 
-                    child: Text(
-                      "$teamBPoints",
-                      style: TextStyle(fontSize: 100),
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      addPoints(teamName: "B", point: 1);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(150, 50),
-                      backgroundColor: Colors.orange,
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                        ),
+                        child: Text(
+                          "Add 3 Point",
+                          style: TextStyle(fontSize: 18),
+                        ),
                       ),
-                    ),
-                    child: Text("Add 1 Point", style: TextStyle(fontSize: 18)),
+                    ],
                   ),
-                  SizedBox(height: 15),
-                  ElevatedButton(
-                    onPressed: () {
-                      addPoints(teamName: "B", point: 2);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(150, 50),
-                      backgroundColor: Colors.orange,
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6),
-                      ),
-                    ),
-                    child: Text("Add 2 Point", style: TextStyle(fontSize: 18)),
+                  SizedBox(
+                    height: 420,
+                    child: VerticalDivider(indent: 30, endIndent: 20),
                   ),
-                  SizedBox(height: 15),
-                  ElevatedButton(
-                    onPressed: () {
-                      addPoints(teamName: "B", point: 3);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(150, 50),
-                      backgroundColor: Colors.orange,
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text("Team B", style: TextStyle(fontSize: 32)),
+
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 25.0),
+
+                        child: Text(
+                          "$teamBPoints",
+                          style: TextStyle(fontSize: 100),
+                        ),
                       ),
-                    ),
-                    child: Text("Add 3 Point", style: TextStyle(fontSize: 18)),
+                      ElevatedButton(
+                        onPressed: () {
+                          addPoints(teamName: "B", point: 1);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(150, 50),
+                          backgroundColor: Colors.orange,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                        ),
+                        child: Text(
+                          "Add 1 Point",
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                      SizedBox(height: 15),
+                      ElevatedButton(
+                        onPressed: () {
+                          addPoints(teamName: "B", point: 2);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(150, 50),
+                          backgroundColor: Colors.orange,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                        ),
+                        child: Text(
+                          "Add 2 Point",
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                      SizedBox(height: 15),
+                      ElevatedButton(
+                        onPressed: () {
+                          addPoints(teamName: "B", point: 3);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(150, 50),
+                          backgroundColor: Colors.orange,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                        ),
+                        child: Text(
+                          "Add 3 Point",
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
+              ),
+              SizedBox(height: 100),
+
+              ElevatedButton(
+                onPressed: () {
+                  resetPoints();
+                },
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(150, 50),
+                  backgroundColor: Colors.orange,
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                ),
+                child: Text("Reset", style: TextStyle(fontSize: 18)),
               ),
             ],
           ),
-          SizedBox(height: 100),
-
-          ElevatedButton(
-            onPressed: () {
-              resetPoints();
-            },
-            style: ElevatedButton.styleFrom(
-              minimumSize: Size(150, 50),
-              backgroundColor: Colors.orange,
-              foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(6),
-              ),
-            ),
-            child: Text("Reset", style: TextStyle(fontSize: 18)),
-          ),
-        ],
+        ),
       ),
     );
   }
