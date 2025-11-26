@@ -13,11 +13,10 @@ class CounterCubit extends Cubit<CounterState> {
   void incrementPoints({required TeamEnum teamName, required int point}) {
     if (teamName == TeamEnum.A) {
       teamAPoints += point;
-      emit(CounterAIncrementState());
     } else if (teamName == TeamEnum.B) {
       teamBPoints += point;
-      emit(CounterBIncrementState());
     }
+    emit(CounterIncrementState());
   }
 
   void resetPoints() {
