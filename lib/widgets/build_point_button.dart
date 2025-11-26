@@ -1,3 +1,4 @@
+import 'package:basketball_points_counter_app/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class BuildPointButton extends StatelessWidget {
@@ -19,9 +20,7 @@ class BuildPointButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(15),
       child: Container(
         width: 140,
-
         padding: EdgeInsets.symmetric(vertical: 14),
-
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           gradient: LinearGradient(
@@ -41,7 +40,7 @@ class BuildPointButton extends StatelessWidget {
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: AppColors.white,
               letterSpacing: .5,
             ),
           ),

@@ -1,3 +1,4 @@
+import 'package:basketball_points_counter_app/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomDivider extends StatelessWidget {
@@ -15,7 +16,7 @@ class CustomDivider extends StatelessWidget {
           end: Alignment.bottomCenter,
           colors: [
             Colors.transparent,
-            Color(0xFFe94560).withValues(alpha: 0.3),
+            AppColors.teamAColorOne.withValues(alpha: 0.3),
             Colors.transparent,
           ],
         ),

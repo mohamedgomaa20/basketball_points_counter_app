@@ -1,3 +1,4 @@
+import 'package:basketball_points_counter_app/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class GradientBackground extends StatelessWidget {
@@ -8,11 +9,7 @@ class GradientBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Color(0xFF1a1a2e), Color(0xFF16213e), Color(0xFF0f3460)],
-        ),
-      ),
+      decoration: BoxDecoration(gradient: AppColors.backgroundGradient),
       child: child,
     );
   }

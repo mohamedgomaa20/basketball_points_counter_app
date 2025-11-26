@@ -1,3 +1,4 @@
+import 'package:basketball_points_counter_app/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class BuildTeamPointItem extends StatelessWidget {
@@ -38,8 +39,10 @@ class BuildTeamPointItem extends StatelessWidget {
           style: TextStyle(
             fontSize: 75,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
-            shadows: [Shadow(color: color.withValues(alpha: .8), blurRadius: 20)],
+            color: AppColors.white,
+            shadows: [
+              Shadow(color: color.withValues(alpha: .8), blurRadius: 20),
+            ],
           ),
         ),
       ),

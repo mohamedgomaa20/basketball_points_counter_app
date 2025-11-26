@@ -1,3 +1,4 @@
+import 'package:basketball_points_counter_app/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class ResetButtonSection extends StatelessWidget {
@@ -16,11 +17,11 @@ class ResetButtonSection extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           gradient: LinearGradient(
-            colors: [Color(0xFFe94560), Color(0xFFf4567c)],
+            colors: [AppColors.teamAColorOne, AppColors.teamAColorTwo],
           ),
           boxShadow: [
             BoxShadow(
-              color: Color(0xFFe94560).withValues(alpha: 0.4),
+              color: AppColors.teamAColorOne.withValues(alpha: 0.4),
               blurRadius: 20,
               offset: Offset(0, 8),
             ),
@@ -29,14 +30,14 @@ class ResetButtonSection extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.refresh, color: Colors.white, size: 24),
+            Icon(Icons.refresh, color: AppColors.white, size: 24),
             SizedBox(width: 12),
             Text(
               "Reset Game",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: AppColors.white,
                 letterSpacing: 1,
               ),
             ),

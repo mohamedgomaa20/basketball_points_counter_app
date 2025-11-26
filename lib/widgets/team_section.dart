@@ -1,3 +1,4 @@
+import 'package:basketball_points_counter_app/constants/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../cubit/counter_cubit.dart';
@@ -18,7 +19,7 @@ class TeamSection extends StatelessWidget {
           child: BuildTeamCard(
             teamName: "Team A",
             teamPoints: cubit.teamAPoints,
-            color: Color(0xFFe94560),
+            color: AppColors.teamAColorOne,
             onAdd1: () => cubit.incrementPoints(teamName: TeamEnum.A, point: 1),
             onAdd2: () => cubit.incrementPoints(teamName: TeamEnum.A, point: 2),
             onAdd3: () => cubit.incrementPoints(teamName: TeamEnum.A, point: 3),
@@ -29,7 +30,7 @@ class TeamSection extends StatelessWidget {
           child: BuildTeamCard(
             teamName: "Team B",
             teamPoints: cubit.teamBPoints,
-            color: Color(0xFF4ecca3),
+            color: AppColors.teamBColorOne,
             onAdd1: () => cubit.incrementPoints(teamName: TeamEnum.B, point: 1),
             onAdd2: () => cubit.incrementPoints(teamName: TeamEnum.B, point: 2),
             onAdd3: () => cubit.incrementPoints(teamName: TeamEnum.B, point: 3),
