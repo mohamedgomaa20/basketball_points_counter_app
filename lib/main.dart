@@ -1,4 +1,4 @@
-import 'package:basketball_points_counter_app/basketball_points_counter_app.dart';
+import 'package:basketball_points_counter_app/screens/counter_screen.dart';
 import 'package:basketball_points_counter_app/cubit/counter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +16,7 @@ class PointsCounter extends StatelessWidget {
       create: (context) => CounterCubit(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: BasketballPointsCounterScreen(),
+        home: CounterScreen(),
       ),
     );
   }

@@ -1,29 +1,25 @@
 import 'package:basketball_points_counter_app/cubit/counter_cubit.dart';
- import 'package:basketball_points_counter_app/cubit/counter_state.dart';
-import 'package:basketball_points_counter_app/team_enum.dart';
+import 'package:basketball_points_counter_app/cubit/counter_state.dart';
+import 'package:basketball_points_counter_app/enums/team_enum.dart';
 import 'package:basketball_points_counter_app/widgets/build_team_card.dart';
 import 'package:basketball_points_counter_app/widgets/custom_divider.dart';
 import 'package:basketball_points_counter_app/widgets/header_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class BasketballPointsCounterScreen extends StatelessWidget {
-  const BasketballPointsCounterScreen({super.key});
+import '../widgets/gradient_background.dart';
+
+class CounterScreen extends StatelessWidget {
+  const CounterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color(0xFF1a1a2e), Color(0xFF16213e), Color(0xFF0f3460)],
-          ),
-        ),
+      body: GradientBackground(
         child: SafeArea(
           child: Column(
             children: [
               HeaderSection(),
-
               BlocConsumer<CounterCubit, CounterState>(
                 listener: (context, state) {},
                 builder: (context, state) {
