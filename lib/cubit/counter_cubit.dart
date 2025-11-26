@@ -3,7 +3,9 @@ import 'package:basketball_points_counter_app/team_enum.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CounterCubit extends Cubit<CounterState> {
-  CounterCubit(super.initialState);
+  CounterCubit() : super(CounterAIncrementState());
+
+  static CounterCubit get(context) => BlocProvider.of(context);
 
   int teamAPoints = 0;
   int teamBPoints = 0;
