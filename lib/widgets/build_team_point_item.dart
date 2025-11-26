@@ -19,14 +19,14 @@ class BuildTeamPointItem extends StatelessWidget {
         shape: BoxShape.circle,
         gradient: RadialGradient(
           colors: [
-            color.withOpacity(.3),
-            color.withOpacity(.1),
+            color.withValues(alpha: .3),
+            color.withValues(alpha: .1),
             Colors.transparent,
           ],
         ),
         boxShadow: [
           BoxShadow(
-            color: color.withOpacity(.3),
+            color: color.withValues(alpha: .3),
             blurRadius: 30,
             spreadRadius: 5,
           ),
@@ -39,7 +39,7 @@ class BuildTeamPointItem extends StatelessWidget {
             fontSize: 75,
             fontWeight: FontWeight.bold,
             color: Colors.white,
-            shadows: [Shadow(color: color.withOpacity(.8), blurRadius: 20)],
+            shadows: [Shadow(color: color.withValues(alpha: .8), blurRadius: 20)],
           ),
         ),
       ),

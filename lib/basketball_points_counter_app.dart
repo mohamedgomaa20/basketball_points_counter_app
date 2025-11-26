@@ -2,6 +2,8 @@ import 'package:basketball_points_counter_app/widgets/build_team_card.dart';
 import 'package:flutter/material.dart';
 
 class BasketballPointsCounterScreen extends StatefulWidget {
+  const BasketballPointsCounterScreen({super.key});
+
   @override
   State<BasketballPointsCounterScreen> createState() =>
       _BasketballPointsCounterScreenState();
@@ -31,8 +33,6 @@ class _BasketballPointsCounterScreenState
 
   @override
   Widget build(BuildContext context) {
-    // const teamAColor = Color(0xFFe94560);
-    // const teamBColor = Color(0xFF4ecca3);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -131,7 +131,6 @@ class _BasketballPointsCounterScreenState
                       ),
                     ],
                   ),
-
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [

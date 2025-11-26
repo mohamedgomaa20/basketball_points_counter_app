@@ -24,17 +24,17 @@ class BuildPointButton extends StatelessWidget {
 
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          gradient: LinearGradient(colors: [color, color.withOpacity(.7)]),
+          gradient: LinearGradient(
+            colors: [color, color.withValues(alpha: .7)],
+          ),
           boxShadow: [
             BoxShadow(
-              color: color.withOpacity(.4),
+              color: color.withValues(alpha: .4),
               blurRadius: 15,
-
               offset: Offset(0, 6),
             ),
           ],
         ),
-
         child: Center(
           child: Text(
             text,

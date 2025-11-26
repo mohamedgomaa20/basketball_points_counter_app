@@ -15,9 +15,9 @@ class BuildTeamNameItem extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       decoration: BoxDecoration(
-        color: color.withOpacity(.3),
+        color: color.withValues(alpha: .3),
         borderRadius: BorderRadius.circular(15),
-        border: Border.all(color: color.withOpacity(.3), width: 2),
+        border: Border.all(color: color.withValues(alpha: .3), width: 2),
       ),
       child: Text(
         teamName,
